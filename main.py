@@ -6,12 +6,8 @@
 # Due Date: 11/7/24
 # PA3
 
-
-
 # This program lets the user choose from a selection of certain ASCII art.
 # ASCII Art Credits: https://www.asciiart.eu/
-# INPUT IN:
-# INPUT OUT:
 
 import random
 
