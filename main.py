@@ -12,83 +12,112 @@
 
 import random
 
-# Purpose: Outputs an ASCII art cat after it is chosen.
-# Name: cat
+
+# Purpose: Outputs an approximation of a circle design.
+# Name: draw_circle
 # Parameters: None
 # Return: None
-def cat():
+def draw_circle():
     print("""
-    |\---/|
-    | o_o |
-     \_^_/
+      ****
+     *    *
+    *      *
+     *    *
+      ****
     """)
 
 
-# Purpose: Outputs an ASCII art dog after it is chosen.
-# Name: dog
+# Purpose: Draws a set of customizable lines based on user input.
+# Name: draw_lines
 # Parameters: None
 # Return: None
-def dog():
-    print("""
-                __
-    (\,--------'()'--o
-     (_    ___    /~"
-      (_)_)  (_)_)
-    """)
+def draw_lines():
+    try:
+        num_lines = int(input("How many lines to draw? "))
+        char = input("What character(s) should be used for the lines? ")
+        repetitions = int(input("How many times should the characters repeat per line? "))
+
+        for _ in range(num_lines):
+            print(char * repetitions)
+    except ValueError:
+        print("Invalid input. Please enter numbers where expected.")
 
 
-# Purpose: Outputs an ASCII art owl after it is chosen.
-# Name: owl
+# Purpose: Outputs the first random design.
+# Name: random_design1
 # Parameters: None
 # Return: None
-def owl():
-    print("""
-     /\_/\
-    ((@v@))
-    ():::()
-     VV-VV
-    """)
+def random_design1():
+    for i in range(5):
+        print(" " * (5 - i) + "*" * (2 * i + 1))
 
 
-# Purpose: Chooses a random ASCII art and outputs it.
-# Name: random_art
-# Parameters: none
-# Return: none
-def random_art():
-    print('Choosing a random ASCII art...')
-    # Randomly select and call one of the art functions
-    selection = random.choice([cat, dog, owl])
-    selection()
+# Purpose: Outputs the second random design.
+# Name: random_design2
+# Parameters: None
+# Return: None
+def random_design2():
+    for i in range(5, 0, -1):
+        print("@" * i)
 
 
-# Purpose: Asks for user input of which ASCII art to display
+# Purpose: Outputs the third random design. It is using repeated random characters.
+# Name: random_design3
+# Parameters: None
+# Return: None
+def random_design3():
+    symbols = "!@#$%^&*()"
+    for _ in range(3):  # Draw 3 lines
+        line = ""
+        for _ in range(10):
+            line += random.choice(symbols)
+        print(line)
+
+
+
+# Purpose: Chooses and outputs one of three random designs.
+# Name: draw_random
+# Parameters: None
+# Return: None
+def draw_random():
+    random.choice([random_design1, random_design2, random_design3])()
+
+
+# Purpose: Displays a menu for the user to choose an ASCII art option.
 # Name: menu
-# Parameters: none
-# Return: none
+# Parameters: None
+# Return: None
 def menu():
-    print("""Welcome! Please choose an ASCII art to display:
-    1 - ASCII Cat
-    2 - ASCII Dog
-    3 - ASCII Owl
-    4 - Random
-    """)
     while True:
-        choice = input('Please select 1-4: ')
+        print("""
+        Welcome to the ASCII Art Program!
+        Choose an option:
+        1 - Circle
+        2 - Lines
+        3 - Random Design
+        4 - Exit
+        """)
+        choice = input("Enter your choice: ")
 
-        # Validate the input to ensure it is within the accepted range
-        if choice in ['1', '2', '3', '4']:
-            if choice == '1':
-                cat()
-            elif choice == '2':
-                dog()
-            elif choice == '3':
-                owl()
-            elif choice == '4':
-                random_art()
-            break  # Exit the loop after displaying chosen art
+        if choice == "1":
+            draw_circle()
+        elif choice == "2":
+            draw_lines()
+        elif choice == "3":
+            draw_random()
+        elif choice == "4":
+            print("Goodbye!")
+            break
         else:
-            print('Invalid answer! Please only input a number between 1 and 4.')
+            print("Invalid choice. Please try again.")
 
 
-# Calls the menu function
-menu()
+# Purpose: Entry point of the program, calls the menu function.
+# Name: main
+# Parameters: None
+# Return: None
+def main():
+    menu()
+
+
+main()
