@@ -70,7 +70,7 @@ def random_design2():
 # Return: None
 def random_design3():
     symbols = "!@#$%^&*()"
-    for _ in range(3):  # Draw 3 lines
+    for _ in range(3):
         line = ""
         for _ in range(10):
             line += random.choice(symbols)
