@@ -45,7 +45,7 @@
 - The way you created the ASCII characters is commendable. 
 - 
 
-### Grade: R
+### Grade: M
 
 ### Participation Grade: S
  - If participation grade is unsatisfactory check the `NO` in the documents sections
